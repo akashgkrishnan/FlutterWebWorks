@@ -1,6 +1,6 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import '../models/models.dart';
+import 'widgets.dart';
 
 class CreatePostContainer extends StatelessWidget {
   final User currentUser;
@@ -18,12 +18,7 @@ class CreatePostContainer extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                radius: 20.0,
-                backgroundColor: Colors.grey[200],
-                backgroundImage:
-                    CachedNetworkImageProvider(currentUser.imageUrl),
-              ),
+              ProfileAvatar(imageUrl: currentUser.imageUrl),
               const SizedBox(
                 width: 8,
               ),
@@ -63,7 +58,8 @@ class CreatePostContainer extends StatelessWidget {
                 ),
                 FlatButton.icon(
                   label: Text('room'),
-                  icon: const Icon(Icons.video_call, color: Colors.purpleAccent),
+                  icon:
+                      const Icon(Icons.video_call, color: Colors.purpleAccent),
                   onPressed: () {},
                 ),
               ],

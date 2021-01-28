@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/models.dart';
 import '../config/palette.dart';
+import './widgets.dart';
 
 class Rooms extends StatelessWidget {
   final List<User> onlineUsers;
@@ -15,18 +16,26 @@ class Rooms extends StatelessWidget {
       height: 50,
       color: Colors.white,
       child: ListView.builder(
-          padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
-          scrollDirection: Axis.horizontal,
-          itemCount: 1 + onlineUsers.length,
-          itemBuilder: (context, index) {
-            if (index == 0) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 9.0),
-                child: _CreateRoomButton(),
-              );
-            }
-            return Container(height: 20, width: 20, child: Text('hi'));
-          }),
+        padding: const EdgeInsets.symmetric(vertical: 4.0, horizontal: 10.0),
+        scrollDirection: Axis.horizontal,
+        itemCount: 1 + onlineUsers.length,
+        itemBuilder: (context, index) {
+          if (index == 0) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 9.0),
+              child: _CreateRoomButton(),
+            );
+          }
+          final User user = onlineUsers[index - 1];
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: ProfileAvatar(
+              imageUrl: user.imageUrl,
+              isActive: true,
+            ),
+          );
+        },
+      ),
     );
   }
 }
@@ -56,8 +65,10 @@ class _CreateRoomButton extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-        const SizedBox(width: 4.0,),
-        const Text('Create \nRoom'),
+          const SizedBox(
+            width: 4.0,
+          ),
+          const Text('Create \nRoom'),
         ],
       ),
     );
