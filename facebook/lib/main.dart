@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Palette.scaffold,
         primarySwatch: Colors.blue,
       ),
-      home: HomeScreen(),
+      home: NavScreen(),
     );
   }
 }
